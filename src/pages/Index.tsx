@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react"; // Ensure React is imported
 import { ProgressIndicator } from "@/components/ProgressIndicator";
 import { CameraSetupStep } from "@/components/steps/CameraSetupStep";
@@ -6,6 +7,8 @@ import { NavigationButtons } from "@/components/steps/NavigationButtons";
 import ExtrinsicCalibration from "@/components/ExtrinsicCalibration";
 import { useCameras } from "@/hooks/useCameras";
 import { CalibrationStep } from "@/components/CalibrationStep";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const STEPS = [
   "Camera Setup",
@@ -64,9 +67,14 @@ const Index = () => {
     <div className="min-h-screen bg-background p-8">
       <div className="mx-auto max-w-5xl space-y-8">
         <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Camera Calibration Wizard
-          </h1>
+          <div className="flex justify-between items-center">
+            <h1 className="text-4xl font-bold tracking-tight">
+              Camera Calibration Wizard
+            </h1>
+            <Link to="/yolo-training">
+              <Button variant="outline">YOLOv8 Training</Button>
+            </Link>
+          </div>
           <ProgressIndicator
             steps={STEPS}
             currentStep={currentStep}
